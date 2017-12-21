@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+   
+<form method="post" action="/attributions">
+        <p>
+            <label for="pays">Choisir un utilisateur</label><br />
+            <select name="visiteur" >
+              <% visiteurs.forEach((visiteur)=>{ %>
+                <option value="<%=visiteur.id%>" ><%= visiteur.firstname %> </option>
+                <% }) %>
+             
+            </select>
+            <label for="pays">Choisir un ordinateur</label><br />
+            <select  name="ordi">
+                    <% ordis.forEach((ordi)=>{ %>
+                        <option value="<%=ordi.id%>"><%= ordi.name %></option>
+                    <% }) %>
+            </select>
+            <label for="pays">Choisir une horaire</label><br />
+            
+            <select name="horaire" id="">
+                <option value="8h-9h">8h-9h</option>
+                <option value="9h-10h">9h-10h</option>
+                <option value="11h-12h">11h-12h</option>
+                <option value="">12h-13h</option>
+                <option value="">13h-14h</option>
+                <option value="">14h-15h</option>
+                <option value="">15h-16h</option>
+                <option value="">16h-17h</option>
+                <option value="">17h-18h</option>
+            </select>
+        </p>
+        <button type="submit" class="btn btn-success btn-lg">Valider</button>
+     </form>
+
+    <% attributions.forEach((attributions)=>{ %>
+        <div class="row">
+            <div class="col-md-3">
+                <% visiteurs.forEach((visiteur)=>{ %>
+                    <% if(attributions.visiteur_id == visiteur.id){ %>
+                        <h1>
+                            <%= visiteur.firstname %>
+                        </h1>
+                     <% } %>
+                <% }) %>
+            </div>
+            
+            <div class="col-md-3">
+                <% ordis.forEach((ordi)=>{ %>
+                    <% if(attributions.ordinateur_id == ordi.id){ %>
+                        <h1>
+                            <%= ordi.name %>
+                        </h1>
+                    <% } %>
+                <% }) %>
+            </div>
+            <div class="col-md-3">
+                <h1><%= attributions.horaire %></h1>
+            </div>
+            <div class="col-md-3">
+                <a href="/deleteAttribution/<%= attributions.id %>" class="btn btn-danger btn-lg">Supprimé</a>
+            </div>
+        </div>
+        <%}) %>
+    
+    </div>
+    <script>
+       
+    </script>
+</body>
+</html>
