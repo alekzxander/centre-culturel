@@ -1,14 +1,15 @@
 // app/routes.js
 // const dbconfig = require('../config/database')
 const mysql = require('mysql')
+const dotEnv = require('dotenv').load();
 
 
 const db = mysql.createConnection({
-	host : 'localhost',
-	user : 'root',
-	password : 'root',
-	port : '8889',
-	database : 'centre_culturel'
+	host : process.env.HOST,
+	user: process.env.USER,
+	password: process.env.PASSWORD ,
+	port : '3306',
+	database : 'ddhujw9g6s8wm26t'
 })
 
 
