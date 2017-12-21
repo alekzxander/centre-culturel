@@ -19,7 +19,8 @@
 		<!--     Fonts and icons     -->
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-		<link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+		
+	
 	</head>
 	
 	<body>
@@ -139,11 +140,11 @@
 										<h4 class="text-center">
 											<%= visiteur.name %>
 										</h4>
-										<h5 class="text-center">
+										<p class="text-center">
 											<%= visiteur.adresse %>
-										</h5>
+										</p>
 										 <p class="text-center"><a href="/updateVisiteur/<%= visiteur.id %>" class="btn btn-primary btn-lg">Modifier</a></p>
-										 <p class="text-center"><a href="/deleteVisiteur/<%= visiteur.id %>" class="btn btn-danger btn-lg">Delete</a></p>
+										 <p class="text-center"><a href="/deleteVisiteur/<%= visiteur.id %>" class="btn btn-danger btn-lg">Supprimer</a></p>
 										 
 									</div>
 									<% }) %>

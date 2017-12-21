@@ -163,7 +163,7 @@ body {
 }
 
 a {
-    color:#5e5e5e;
+    color: #fe9c00;
 }
 
 a:hover, a:focus {
@@ -4039,4 +4039,42 @@ label
 #visiteur
 {
     margin-top: 20px;
+}
+#visiteur .btn 
+{
+    font-size: 15px;
+}
+#visiteur p 
+
+{
+    height: 50px;
+}
+#visiteur h3
+{
+    margin: 10px 0 -20px 0;
+}
+.jumbotron
+{
+    background: #787878;
+    background: -moz-linear-gradient(top, #6a65a8 0%, #343434 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #787878), color-stop(100%, #343434));
+    background: -webkit-linear-gradient(top, #6a65a8 0%, #343434 100%);
+    background: -o-linear-gradient(top, #6a65a8 0%, #343434 100%);
+    background: -ms-linear-gradient(top, #6a65a8 0%, #343434 100%);
+    background: linear-gradient(to bottom, #6a65a8 0%, #dd7777 100%);
+}
+.jumbotron h1
+{
+    color:white;
+    
+}
+.jumbotron p
+{
+    color: white;
+}
+.jumbotron .btn 
+{
+    border-color: white;
+    color :white;
+    font-size: 19px;
 }

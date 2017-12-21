@@ -18,6 +18,22 @@ module.exports = function(app, passport) {
 		}
 		console.log('mysql ok')
 	})
+	app.get('/dashboard', isLoggedIn, function(req, res) {
+		let attribution = 'SELECT * FROM attribution';
+		let visiteurs = 'SELECT * FROM visiteurs';
+		let ordinateurs = 'SELECT * FROM ordinateur';
+		let query = db.query(ordinateurs, (err, ordis) => {
+			let query = db.query(attribution, (err, attributions) => {			
+				let query = db.query(visiteurs, (err, visiteurs) => {
+					if (err){
+						res.send('Oups relation deja crée')
+					}
+					res.render('dashboard.ejs', { ordis: ordis, visiteurs: visiteurs, attributions: attributions, user : req.user })
+				})
+
+			})
+		})
+	});
 
 	// =====================================
 	// HOME PAGE (with login links) ========
@@ -80,8 +96,9 @@ module.exports = function(app, passport) {
 		let sql = 'INSERT INTO attribution SET ?';
 		let params = {visiteur_id : req.body.visiteur, ordinateur_id : req.body.ordi, horaire : req.body.horaire}
 		let query = db.query(sql ,params, (err, result)=>{
-			console.log(result)
-			if(err) throw err;
+			if(err){
+				res.redirect('/admin/attribution')
+			} 
 			res.redirect('/admin/attribution')
 		})
 	})
@@ -155,22 +172,6 @@ module.exports = function(app, passport) {
 	// =====================================
 	// we will want this protected so you have to be logged in to visit
 	// we will use route middleware to verify this (the isLoggedIn function)
-	app.get('/dashboard', isLoggedIn, function(req, res) {
-		let attribution = 'SELECT * FROM attribution';
-		let visiteurs = 'SELECT * FROM visiteurs';
-		let ordinateurs = 'SELECT * FROM ordinateur';
-		let query = db.query(ordinateurs, (err, ordis) => {
-			let query = db.query(attribution, (err, attributions) => {			
-				let query = db.query(visiteurs, (err, visiteurs) => {
-					if (err){
-						res.send('Oups relation deja crée')
-					}
-					res.render('dashboard.ejs', { ordis: ordis, visiteurs: visiteurs, attributions: attributions, user : req.user })
-				})
-
-			})
-		})
-	});
 
 	// =====================================
 	// LOGOUT ==============================
@@ -179,6 +180,9 @@ module.exports = function(app, passport) {
 		req.logout();
 		res.redirect('/');
 	});
+	app.use((req, res) => {
+		res.status(404).render('page404.ejs')
+	})
 };
 
 // route middleware to make sure
