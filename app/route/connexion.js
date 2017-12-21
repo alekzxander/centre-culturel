@@ -1,9 +1,12 @@
+const mysql = require('mysql')
 
 module.exports = function(app, passport) {
+
     	// =====================================
 	// LOGIN ===============================
 	// =====================================
-	// show the login form
+    // show the login form
+
 	app.get('/login', function(req, res) {
         
                 // render the page and pass in any flash data if it exists
@@ -55,9 +58,6 @@ module.exports = function(app, passport) {
                 req.logout();
                 res.redirect('/');
             });
-            app.use((req, res) => {
-                res.status(404).render('page404.ejs')
-            })
         };
         
         // route middleware to make sure
@@ -69,5 +69,6 @@ module.exports = function(app, passport) {
         
             // if they aren't redirect them to the home page
             res.redirect('/');
+	
         }
         
