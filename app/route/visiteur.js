@@ -1,15 +1,7 @@
 const mysql = require('mysql')
 const dotEnv = require('dotenv').load();
 
-
-const db = mysql.createConnection({
-	host : process.env.HOST,
-	user: process.env.USER,
-	password: process.env.PASSWORD ,
-	port : '3306',
-	database : 'ddhujw9g6s8wm26t'
-})
-
+const db = mysql.createConnection(process.env.JAWSDB_URL)
 module.exports = function(app, passport) {
 
     
