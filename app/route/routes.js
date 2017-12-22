@@ -2,7 +2,7 @@
 // const dbconfig = require('../config/database')
 const mysql = require('mysql')
 const dotEnv = require('dotenv').load();
-
+const isLoggedIn = require('./connexion')
 
 const db = mysql.createConnection(process.env.JAWSDB_URL)
 
